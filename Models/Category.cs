@@ -11,7 +11,7 @@ namespace WebApplication1.Models
         public string Name { get; set; }
         public int DiplayOrder { get; set; }    
         public DateTime date { get; set; } =DateTime.Now;
-        public string? city { get; set; }
+        public string city { get; set; }
 
 
     }

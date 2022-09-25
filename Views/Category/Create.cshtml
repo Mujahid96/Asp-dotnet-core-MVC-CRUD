@@ -1,0 +1,41 @@
+﻿@model Category;
+
+ 
+<div class="container container-fluid">
+	
+	<form method="post">
+		<div class="row p-4 mt-3 mb-3 border">
+		<h2 class="text-primary"> Create Category</h2>
+		<hr/>
+			<div class="mb-4">
+				<label asp-for="Name"></label>
+				<input asp-for="Name" class="form-control border mt-2" style="border-radius:10px"/>
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+
+			<div class="mb-4">
+	<label asp-for="DiplayOrder"></label>
+				<input asp-for="DiplayOrder" class="form-control border mt-2" style="border-radius:10px"/>
+			<span asp-validation-for="DiplayOrder" class="text-danger"></span>
+			</div>
+			<div class="mb-4">
+				<label asp-for="city"></label>
+				<input asp-for="city" class="form-control border mt-2" style="border-radius:10px"/>
+				<span asp-validation-for="city" class="text-danger"></span>
+
+				@*if field is empty then it will show by default error msg*@
+			</div>
+			
+				<button type="submit" class="btn btn-success" style="width:150px"> Create</button>
+		
+		
+				<a asp-controller="Category" asp-action="Index" class="btn btn-primary ms-3" style="width:150px">Back to List</a>
+		
+
+			<button type="reset" class="btn btn-outline-danger ms-3" style="width:150px"> Reset</button>
+
+
+		</div>
+
+	</form>
+</div>

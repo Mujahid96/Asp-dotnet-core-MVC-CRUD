@@ -11,8 +11,15 @@ html {
 html {
   position: relative;
   min-height: 100%;
+
 }
 
 body {
   margin-bottom: 60px;
+}
+
+.nav-link:hover{
+    color:red;
+    font-weight:bold;
+    
 }
