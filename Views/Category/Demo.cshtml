@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Category>;
+@{
+    ViewData["Title"] = "Demo";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Its a demopage</p>
+
+
+
+
+
+<style>
+    th,td,tr,thead,tbody{
+        border: 1px solid orange;
+        text-align:center;
+    }
+</style>
+
+<table>
+    <thead class="table table-bodered table-striped" style="width:100%">
+<tr>
+
+    <th>
+        Name
+    </th>
+    <th>
+        Id
+    </th>
+    <th>
+        Display Order
+    </th>
+    <th>
+        Date
+    </th>
+    <th>
+        City
+    </th>
+
+</tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+                 <tr>
+
+                        <td style="width:10%">
+                    @i.Name
+
+                        </td>
+                                 <td style="width:10%">
+                    @i.Id
+
+                            </td>
+                                     <td style="width:10%">
+                    @i.DiplayOrder
+
+                            </td>
+                                     <td style="width:10%">
+                    @i.date
+
+                            </td>
+                                 <td style="width:10%">
+                    @i.city
+
+                                </td>
+                </tr>
+        }
+
+
+    </tbody>
+
+
+</table>
