@@ -32,20 +32,137 @@ namespace WebApplication1.Controllers
             
             return View();
         }
+
+        //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            if (ModelState.IsValid)
+
+            if (obj.Name != null && char.IsUpper(obj.Name[0]) == false)
             {
-                _db.Categories.Add(obj); //database e add korar jonno 
-                _db.SaveChanges(); // Database e change ta save kora jonno
+                ModelState.AddModelError("Categories", "Name must be starts with upparcase");
+
+                                         // field name, error msg
+                                         //field name can be Name/id/DisplayOrder/ whole Categories.
+            }
+           
+
+            if (ModelState.IsValid) //eta diye amader mainly chk korte hoye input field gulo so full hoise naki 
+            {
+
+               
+              
+                    _db.Categories.Add(obj); //database e add korar jonno 
+                    _db.SaveChanges(); // Database e change ta save kora jonno
+
+             
+             
 
                 return RedirectToAction("Index"); //ekhane J page e datagulo dekhano ache se page e redirect kore dea hoise. jeno amra impact ta dekhte pari.
                                                   //ekhane jodi alada controller e thakto tahole pashe comma diye controller er name likhe dea  lagto.
 
             }
+           
+
+
             return View(obj);
         }
+
+
+
+
+        //GET Action
+        public IActionResult Edit(int? id)
+        {
+            if(id==null|| id == 0)
+            {
+                return NotFound();
+            }
+
+            var categoryFromDb = _db.Categories.Find(id);
+            //var categoryFromDbFirst=_db.Categories.FirstOrDefault(u=>u.Id==id);
+            //var categoryFromDbSingle=_db.Categories.SingleOrDefault(u=>u.Id==id);   
+
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(categoryFromDb);
+        }
+
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+
+            if (obj.Name != null && char.IsUpper(obj.Name[0]) == false)
+            {
+                ModelState.AddModelError("Categories", "Name must be starts with upparcase");
+
+                // field name, error msg
+                //field name can be Name/id/DisplayOrder/ whole Categories.
+            }
+
+
+            if (ModelState.IsValid) //eta diye amader mainly chk korte hoye input field gulo so full hoise naki 
+            {
+
+
+
+                _db.Categories.Update(obj); //database e Update korar jonno 
+                _db.SaveChanges(); // Database e change ta save kora jonno
+                return RedirectToAction("Index"); //ekhane J page e datagulo dekhano ache se page e redirect kore dea hoise. jeno amra impact ta dekhte pari.
+                                                  //ekhane jodi alada controller e thakto tahole pashe comma diye controller er name likhe dea  lagto.
+
+            }
+
+
+
+            return View(obj);
+        }
+
+
+        //GET Action
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var categoryFromDb = _db.Categories.Find(id);
+            //var categoryFromDbFirst=_db.Categories.FirstOrDefault(u=>u.Id==id);
+            //var categoryFromDbSingle=_db.Categories.SingleOrDefault(u=>u.Id==id);   
+
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(categoryFromDb);
+        }
+
+        //Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+
+           
+
+            var obj = _db.Categories.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _db.Categories.Remove(obj); 
+                _db.SaveChanges(); 
+                return RedirectToAction("Index"); 
+
+
+        }
+
     }
 }

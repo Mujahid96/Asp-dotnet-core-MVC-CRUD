@@ -8,67 +8,86 @@
 
 
 
+<div class="container container-fluid mt-3">
+
+	 <h2 class="text-danger ">
+Category list
+	 </h2>
+
+
+
+<h1>Index Category</h1>
+   
 
 
 <style>
-    th,td,tr,thead,tbody{
-        border: 1px solid orange;
-        text-align:center;
-    }
+	th,td,tr,thead,tbody{
+		border: 1px solid orange;
+		text-align:center;
+
+	}
 </style>
 
-<table>
-    <thead class="table table-bodered table-striped" style="width:100%">
+<div class="container-fluid mb-5">
+	<table class="mt-5">
+	<thead class="table table-bodered table-striped" style="width:100%">
 <tr>
 
-    <th>
-        Name
-    </th>
-    <th>
-        Id
-    </th>
-    <th>
-        Display Order
-    </th>
-    <th>
-        Date
-    </th>
-    <th>
-        City
-    </th>
+	<th>
+		Name
+	</th>
+	<th>
+		Id
+	</th>
+	<th>
+		Display Order
+	</th>
+	<th>
+		Date
+	</th>
+	<th>
+		City
+	</th>
 
 </tr>
-    </thead>
-    <tbody>
-        @foreach (var i in Model)
-        {
-                 <tr>
+	</thead>
+	<tbody>
+				@foreach (var i in Model)
+				{
+						 <tr>
 
-                        <td style="width:10%">
-                    @i.Name
+								<td style="width:10%">
+							@i.Name
 
-                        </td>
-                                 <td style="width:10%">
-                    @i.Id
+								</td>
+										 <td style="width:10%">
+							@i.Id
 
-                            </td>
-                                     <td style="width:10%">
-                    @i.DiplayOrder
+									</td>
+											 <td style="width:10%">
+							@i.DiplayOrder
 
-                            </td>
-                                     <td style="width:10%">
-                    @i.date
+									</td>
+											 <td style="width:10%">
+							@i.date
 
-                            </td>
-                                 <td style="width:10%">
-                    @i.city
+									</td>
+										 <td style="width:10%">
+							@i.city
 
-                                </td>
-                </tr>
-        }
+										</td>
+						</tr>
+				}
 
 
-    </tbody>
+	</tbody>
+
 
 
 </table>
+
+
+</div>
+
+
+</div>
