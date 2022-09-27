@@ -51,7 +51,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid) //eta diye amader mainly chk korte hoye input field gulo so full hoise naki 
             {
 
-               
+                TempData["success"] = "Category Created Successfully";
               
                     _db.Categories.Add(obj); //database e add korar jonno 
                     _db.SaveChanges(); // Database e change ta save kora jonno
@@ -109,7 +109,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid) //eta diye amader mainly chk korte hoye input field gulo so full hoise naki 
             {
 
-
+                TempData["success"] = "Category Edited Successfully";
 
                 _db.Categories.Update(obj); //database e Update korar jonno 
                 _db.SaveChanges(); // Database e change ta save kora jonno
@@ -156,7 +156,7 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
-
+            TempData["success"] = "Category Deleted Successfully";
             _db.Categories.Remove(obj); 
                 _db.SaveChanges(); 
                 return RedirectToAction("Index"); 
